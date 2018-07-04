@@ -1,9 +1,21 @@
 {
     "compilerOptions": {
-        "jsx": "react",
-        "target": "es2015",
         "module": "commonjs",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true
-    }
+        "esModuleInterop": true,
+        "target": "es6",
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "dist",
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "node_modules/*",
+                "server/types/*"
+            ]
+        }
+    },
+    "include": [
+        "server/**/*"
+    ]
 }
