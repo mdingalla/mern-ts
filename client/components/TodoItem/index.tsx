@@ -1,8 +1,8 @@
-import * as React from 'react';
-import * as classNames from 'classnames';
-import * as style from './style.css';
-import { TodoTextInput } from '../TodoTextInput';
-import { applyMiddleware } from 'redux';
+import * as React from "react";
+import * as classNames from "classnames";
+import * as style from "./style.css";
+import { TodoTextInput } from "../TodoTextInput";
+import { applyMiddleware } from "redux";
 
 export namespace TodoItem {
   export interface Props {

@@ -20,6 +20,7 @@
     ]
   },
   "exclude": [
+    "server",
     "dist",
     "build",
     "node_modules"

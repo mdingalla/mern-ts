@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 
 const isProduction = process.argv.indexOf('-p') >= 0;
-const outPath = Path.join(__dirname, './dist');
+const outPath = Path.join(__dirname, './dist/client');
 const sourcePath = Path.join(__dirname, './client');
 
 module.exports = {

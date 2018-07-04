@@ -1,12 +1,12 @@
-import * as React from 'react';
-import * as style from './style.css';
-import * as classNames from 'classnames';
-import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED, FILTER_TYPES } from '../../constants/filters';
+import * as React from "react";
+import * as style from "./style.css";
+import * as classNames from "classnames";
+import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED, FILTER_TYPES } from "../../constants/filters";
 
 export const FILTER_TITLES = {
-  [SHOW_ALL]: 'All',
-  [SHOW_ACTIVE]: 'Active',
-  [SHOW_COMPLETED]: 'Completed'
+  [SHOW_ALL]: "All",
+  [SHOW_ACTIVE]: "Active",
+  [SHOW_COMPLETED]: "Completed"
 };
 
 export namespace Footer {
@@ -27,11 +27,11 @@ export class Footer extends React.Component<Footer.Props, Footer.State> {
 
   renderTodoCount() {
     const { activeCount } = this.props;
-    const itemWord = activeCount === 1 ? 'item' : 'items';
+    const itemWord = activeCount === 1 ? "item" : "items";
 
     return (
       <span className={style.count}>
-        <strong>{activeCount || 'No'}</strong> {itemWord} left
+        <strong>{activeCount || "No"}</strong> {itemWord} left
       </span>
     );
   }
@@ -41,7 +41,7 @@ export class Footer extends React.Component<Footer.Props, Footer.State> {
 
     return (
       <a className={classNames({ [style.selected]: filter === selectedFilter })}
-        style={{ cursor: 'pointer' }}
+        style={{ cursor: "pointer" }}
         onClick={() => onShow(filter)}>
         {FILTER_TITLES[filter]}
       </a>
