@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run build-sass && npm run build-ts && npm run tslint && npm run copy-static-assets",
     "build-ts": "tsc",
-    "serve": "node serverdist/server.js",
+    "serve": "npm run build && node serverdist/server.js",
     "copy-static-assets": "ts-node copyStaticAssets.ts",
     "watch-ts": "tsc -w",
     "dev": "webpack  --progress --colors",
@@ -95,10 +95,10 @@
   "dependencies": {
     "async": "^2.6.0",
     "babel-polyfill": "^6.26.0",
-    "bootstrap": "^3.3.7",
     "bcrypt-nodejs": "^0.0.3",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
+    "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
     "compression": "^1.7.1",
     "connect-mongo": "^2.0.0",
@@ -117,6 +117,7 @@
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",
+    "pug": "^2.0.3",
     "react": "^16.4.0",
     "react-bootstrap": "^0.31.5",
     "react-bootstrap-table-next": "^0.1.14",
