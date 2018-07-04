@@ -4,7 +4,15 @@
   "private": true,
   "description": "Typescript MERN",
   "scripts": {
-    "dev": "webpack  --progress --colors"
+    "build": "npm run build-sass && npm run build-ts && npm run tslint && npm run copy-static-assets",
+    "build-ts": "tsc",
+    "serve": "node serverdist/server.js",
+    "copy-static-assets": "ts-node copyStaticAssets.ts",
+    "watch-ts": "tsc -w",
+    "dev": "webpack  --progress --colors",
+    "build-sass": "node-sass server/public/css/main.scss serverdist/public/css/main.css",
+    "watch-sass": "node-sass -w server/public/css/main.scss serverdist/public/css/main.css",
+    "tslint": "tslint -c tslint.json -p tsconfig.json"
   },
   "license": "MIT",
   "devDependencies": {
