@@ -91,6 +91,8 @@ app.use(
 /**
  * Primary app routes.
  */
+
+
 app.get("/", homeController.index);
 app.get("/login", userController.getLogin);
 app.post("/login", userController.postLogin);
@@ -109,7 +111,7 @@ app.post("/account/password", passportConfig.isAuthenticated, userController.pos
 app.post("/account/delete", passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get("/account/unlink/:provider", passportConfig.isAuthenticated, userController.getOauthUnlink);
 app.get("/testing", (request, response) => {
-  response.sendFile(resolve(__dirname, "public/index.html"));
+  response.sendFile(resolve(__dirname, "public/testing.html"));
 });
 /**
  * API examples routes.

@@ -106,6 +106,7 @@ module.exports = {
       disable: !isProduction
     }),
     new HtmlWebpackPlugin({
+      filename: 'testing.html',
       template: 'index.html'
     }),
     new ProvidePlugin({
