@@ -1,1 +1,1 @@
-export const pagePath = "/testing";
+export const pagePath = "/app";
