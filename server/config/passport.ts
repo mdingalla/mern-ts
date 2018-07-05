@@ -61,11 +61,13 @@ passport.use(new LocalStrategy({ usernameField: "email" }, (email, password, don
 /**
  * Sign in with Facebook.
  */
+const fbCallbackUrl = process.env.NODE_ENV !== "production" ? "/auth/facebook/callback" : "https://mern-ts.herokuapp.com/auth/facebook/callback/";
 passport.use(new FacebookStrategy({
   clientID: process.env.FACEBOOK_ID,
   clientSecret: process.env.FACEBOOK_SECRET,
+  callbackURL: fbCallbackUrl,
   // callbackURL: "/auth/facebook/callback",
-  callbackURL: "https://mern-ts.herokuapp.com/auth/facebook/callback/",
+  // callbackURL: "https://mern-ts.herokuapp.com/auth/facebook/callback/",
   profileFields: ["name", "email", "link", "locale", "timezone"],
   passReqToCallback: true
 }, (req: any, accessToken, refreshToken, profile, done) => {
