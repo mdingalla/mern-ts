@@ -4,6 +4,8 @@
   "private": true,
   "description": "Typescript MERN",
   "scripts": {
+    "prestart": "npm run build",
+    "start": "npm run serve",
     "build": "npm run build-sass && npm run build-ts && npm run tslint && npm run copy-static-assets && npm run build-client",
     "build-ts": "tsc --p tsconfig.server.json",
     "serve": "node dist/server/server.js",
