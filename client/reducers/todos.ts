@@ -3,7 +3,7 @@ import * as Actions from '../constants/actions';
 
 const initialState: TodoStoreState = [{
   id: 0,
-  text: 'Use Redux',
+  text: 'Use React',
   completed: false
 }];
 
