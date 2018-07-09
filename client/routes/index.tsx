@@ -17,4 +17,11 @@ const AppRoutes = () =>  (<div className="container-fluid">
 
 );
 
+
+// const AppRoutes = hot(module)(() => (
+//     <div className="container-fluid">
+//                         <Route exact path={pagePath} component={withRouter(App)} />
+//                     </div>
+
+// ));
 export default AppRoutes;

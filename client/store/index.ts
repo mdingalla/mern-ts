@@ -2,14 +2,14 @@ import { createStore, applyMiddleware, Store } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { logger } from "../middleware";
 import thunk from "redux-thunk";
-import { createBrowserHistory } from "history";
-
+// import { createBrowserHistory } from "history";
+import { History } from "history";
 import  { RootState, rootReducer } from "../reducers";
 import { ConnectedRouter, routerReducer, routerMiddleware, push  } from "react-router-redux";
-const history = createBrowserHistory();
+// const history = createBrowserHistory();
 
 
-export function configureStore(initialState?: RootState) {
+export function configureStore(history: History, initialState?: RootState) {
   let middleware = applyMiddleware(logger, thunk, routerMiddleware(history));
 
   console.log("process.env.NODE_ENV " + process.env.NODE_ENV);

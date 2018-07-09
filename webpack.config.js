@@ -1,8 +1,10 @@
 const Webpack = require('webpack');
 const Path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
+var MiniCssExtractPlugin = require('mini-css-extract-plugin');
+var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 
 const isProduction = process.argv.indexOf('-p') >= 0;
 // const outPath = Path.join(__dirname, './dist/client');
@@ -11,8 +13,25 @@ const sourcePath = Path.join(__dirname, './client');
 
 module.exports = {
   context: sourcePath,
+  optimization: {
+    splitChunks: {
+      name: true,
+      cacheGroups: {
+        commons: {
+          chunks: 'initial',
+          minChunks: 2
+        },
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'all',
+          priority: -10
+        }
+      }
+    },
+    runtimeChunk: true
+  },
   entry: {
-    main: './index.tsx',
+    main: './App.tsx',
     vendor: [
       'babel-polyfill',
       'react',
@@ -31,6 +50,7 @@ module.exports = {
     path: outPath,
     publicPath: '/',
     filename: '[name].bundle.js',
+    chunkFilename: '[chunkhash].js'
   },
   target: 'web',
   resolve: {
@@ -40,7 +60,7 @@ module.exports = {
     mainFields: ['browser', 'main']
   },
   module: {
-    loaders: [
+    rules: [
       // .ts, .tsx
       {
         test: /\.tsx?$/,
@@ -54,34 +74,64 @@ module.exports = {
       // css
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              query: {
-                modules: true,
-                sourceMap: !isProduction,
-                importLoaders: 1,
-                localIdentName: '[local]__[hash:base64:5]'
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                ident: 'postcss',
-                plugins: [
-                  require('postcss-import')({ addDependencyTo: Webpack }),
-                  require('postcss-url')(),
-                  require('postcss-cssnext')(),
-                  require('postcss-reporter')(),
-                  require('postcss-browser-reporter')({ disabled: isProduction }),
-                ]
-              }
+        use: [
+          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+          {
+            loader: 'css-loader',
+            query: {
+              modules: true,
+              sourceMap: !isProduction,
+              importLoaders: 1,
+              localIdentName: isProduction ? '[hash:base64:5]' : '[local]__[hash:base64:5]'
             }
-          ]
-        })
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                require('postcss-import')({ addDependencyTo: Webpack }),
+                require('postcss-url')(),
+                require('postcss-cssnext')(),
+                require('postcss-reporter')(),
+                require('postcss-browser-reporter')({
+                  disabled: isProduction
+                })
+              ]
+            }
+          }
+        ]
       },
+      // {
+      //   test: /\.css$/,
+      //   use: ExtractTextPlugin.extract({
+      //     fallback: 'style-loader',
+      //     use: [
+      //       {
+      //         loader: 'css-loader',
+      //         query: {
+      //           modules: true,
+      //           sourceMap: !isProduction,
+      //           importLoaders: 1,
+      //           localIdentName: '[local]__[hash:base64:5]'
+      //         }
+      //       },
+      //       {
+      //         loader: 'postcss-loader',
+      //         options: {
+      //           ident: 'postcss',
+      //           plugins: [
+      //             require('postcss-import')({ addDependencyTo: Webpack }),
+      //             require('postcss-url')(),
+      //             require('postcss-cssnext')(),
+      //             require('postcss-reporter')(),
+      //             require('postcss-browser-reporter')({ disabled: isProduction }),
+      //           ]
+      //         }
+      //       }
+      //     ]
+      //   })
+      // },
       // static assets
       { test: /\.html$/, use: 'html-loader' },
       { test: /\.png$/, use: 'url-loader?limit=10000' },
@@ -95,14 +145,19 @@ module.exports = {
     new Webpack.DefinePlugin({
       'process.env.NODE_ENV': isProduction === true ? JSON.stringify('production') : JSON.stringify('development')
     }),
-    new Webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor.bundle.js',
-      minChunks: Infinity
-    }),
+    new WebpackCleanupPlugin(),
+    // new Webpack.optimize.CommonsChunkPlugin({
+    //   name: 'vendor',
+    //   filename: 'vendor.bundle.js',
+    //   minChunks: Infinity
+    // }),
     new Webpack.optimize.AggressiveMergingPlugin(),
-    new ExtractTextPlugin({
-      filename: 'styles.css',
+    // new ExtractTextPlugin({
+    //   filename: 'styles.css',
+    //   disable: !isProduction
+    // }),
+    new MiniCssExtractPlugin({
+      filename: '[contenthash].css',
       disable: !isProduction
     }),
     new HtmlWebpackPlugin({
@@ -118,9 +173,14 @@ module.exports = {
   devServer: {
     contentBase: sourcePath,
     hot: true,
-    stats: {
-      warnings: false
+    inline: true,
+    historyApiFallback: {
+      disableDotRule: true
     },
+    stats: 'minimal'
+    // stats: {
+    //   warnings: false
+    // },
   },
   node: {
     // workaround for webpack-dev-server issue

@@ -1,28 +1,31 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { Router, Route, Switch } from "react-router";
-import { createBrowserHistory } from "history";
-import { configureStore } from "./store";
-import { App } from "./containers/App";
-import AppRoutes from "./routes";
-import { ConnectedRouter } from "react-router-redux";
 
+// import * as React from "react";
+// import { render } from "react-dom";
+// import { AppContainer } from "react-hot-loader";
+// import App from "./App";
+// import { configureStore } from "./store";
 
-// import '!style-loader!css-loader!./index.css';
-// import '!style-loader!css-loader!./sb-admin.css';
+// const store = configureStore();
+// const mountApp = document.getElementById("root");
 
+// render(
+//   <AppContainer>
+//     <App store={store} />
+//   </AppContainer>,
+//   mountApp
+// );
 
-const store = configureStore();
-const history = createBrowserHistory();
-
-
-ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <AppRoutes {...this.props} />
-    </ConnectedRouter>
-
-  </Provider>
-  , document.getElementById("root")
-);
+// // For hot reloading of react components
+// if (module.hot) {
+//   module.hot.accept("./App", () => {
+//     // If you use Webpack 2 in ES modules mode, you can
+//     // use <App /> here rather than require() a <NextApp />.
+//     const NextApp = require("./App").default; // eslint-disable-line global-require
+//     render(
+//       <AppContainer>
+//         <NextApp store={store} />
+//       </AppContainer>,
+//       mountApp
+//     );
+//   });
+// }
