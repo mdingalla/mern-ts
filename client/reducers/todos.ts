@@ -1,9 +1,9 @@
-import { handleActions } from 'redux-actions';
-import * as Actions from '../constants/actions';
+import { handleActions } from "redux-actions";
+import * as Actions from "../constants/actions";
 
 const initialState: TodoStoreState = [{
   id: 0,
-  text: 'Use React',
+  text: "Use ReactJS",
   completed: false
 }];
 

@@ -6,7 +6,8 @@
   ],
   "watch": [
     "client",
-    "server"
+    "server",
+    "views"
   ],
   "verbose": true,
   "legacyWatch": true,

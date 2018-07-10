@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+import * as nodemailer from "nodemailer";
 import { Request, Response } from "express";
 
 const transporter = nodemailer.createTransport({

@@ -1,7 +1,7 @@
 "use strict";
 
-import async from "async";
-import request from "request";
+// import async from "async";
+// import request from "request";
 import graph from "fbgraph";
 import { Response, Request, NextFunction } from "express";
 
@@ -12,7 +12,7 @@ import { Response, Request, NextFunction } from "express";
  */
 export let getApi = (req: Request, res: Response) => {
   res.render("api/index", {
-    title: "API Examples"
+    title: "API Example"
   });
 };
 

@@ -15,9 +15,9 @@ export function configureStore(history: History, initialState?: RootState) {
   console.log("process.env.NODE_ENV " + process.env.NODE_ENV);
 
 
-  // if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === "development") {
     middleware = composeWithDevTools(middleware);
-  // }
+  }
   const store = createStore(rootReducer, initialState, middleware) as Store<RootState>;
 
   if (module.hot) {

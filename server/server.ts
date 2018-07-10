@@ -1,4 +1,4 @@
-import errorHandler from "errorhandler";
+// import errorHandler from "errorhandler";
 
 import app from "./app";
 
@@ -13,7 +13,7 @@ if (isDevMode) {
   // eslint-disable-next-line global-require
   const webpack = require("webpack");
   // eslint-disable-next-line global-require
-  const config = require("../../webpack.config.dev");
+  const config = require("../webpack.config.dev");
   // eslint-disable-next-line global-require
   const webpackDevMiddleware = require("webpack-dev-middleware");
   // eslint-disable-next-line global-require
@@ -31,7 +31,7 @@ if (isDevMode) {
 /**
  * Error Handler. Provides full stack - remove for production
  */
-app.use(errorHandler());
+// app.use(errorHandler());
 
 /**
  * Start Express server.
