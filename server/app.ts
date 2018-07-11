@@ -1,17 +1,18 @@
-import express from "express";
-import compression from "compression";  // compresses requests
-import session from "express-session";
-import bodyParser from "body-parser";
+
+import express = require("express");
+import compression = require("compression");  // compresses requests
+import session = require("express-session");
+import bodyParser = require("body-parser");
 import logger from "./util/logger";
-import lusca from "lusca";
-import dotenv from "dotenv";
-import mongo from "connect-mongo";
-import flash from "express-flash";
-import path from "path";
-import mongoose from "mongoose";
-import passport from "passport";
-import expressValidator from "express-validator";
-import bluebird from "bluebird";
+import lusca = require("lusca");
+import dotenv = require("dotenv");
+import mongo = require("connect-mongo");
+import flash = require("express-flash");
+import path = require("path");
+import mongoose = require("mongoose");
+import passport = require("passport");
+import expressValidator = require("express-validator");
+import bluebird = require("bluebird");
 import { MONGODB_URI, SESSION_SECRET } from "./util/secrets";
 import { resolve } from "path";
 

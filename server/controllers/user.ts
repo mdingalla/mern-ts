@@ -1,7 +1,7 @@
-import async from "async";
-import crypto from "crypto";
-import nodemailer from "nodemailer";
-import passport from "passport";
+import async = require("async");
+import crypto = require("crypto");
+import nodemailer = require("nodemailer");
+import passport = require("passport");
 import { default as User, UserModel, AuthToken } from "../models/User";
 import { Request, Response, NextFunction } from "express";
 import { IVerifyOptions } from "passport-local";

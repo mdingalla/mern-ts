@@ -8,6 +8,7 @@
         "sourceMap": true,
         "outDir": "./dist/server",
         "baseUrl": ".",
+        "allowSyntheticDefaultImports":true,
         "paths": {
             "*": [
                 "node_modules/*",

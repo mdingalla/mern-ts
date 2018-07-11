@@ -1,8 +1,8 @@
-import passport from "passport";
-import request from "request";
-import passportLocal from "passport-local";
-import passportFacebook from "passport-facebook";
-import _ from "lodash";
+import passport = require("passport");
+import request = require("request");
+import passportLocal = require("passport-local");
+import passportFacebook = require("passport-facebook");
+import _ = require("lodash");
 
 // import { User, UserType } from '../models/User';
 import { default as User } from "../models/User";
