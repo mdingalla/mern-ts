@@ -95,6 +95,9 @@ app.use(
 
 
 app.get("/", homeController.index);
+// app.get("/", function(req, res) {
+//   res.redirect("/app");
+// });
 app.get("/login", userController.getLogin);
 app.post("/login", userController.postLogin);
 app.get("/logout", userController.logout);

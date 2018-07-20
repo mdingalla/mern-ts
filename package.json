@@ -108,6 +108,8 @@
     "webpack-hot-middleware": "^2.22.2"
   },
   "dependencies": {
+    "@material-ui/core": "^1.4.0",
+    "@material-ui/icons": "^1.1.0",
     "async": "^2.6.0",
     "babel-polyfill": "^6.26.0",
     "bcrypt-nodejs": "^0.0.3",

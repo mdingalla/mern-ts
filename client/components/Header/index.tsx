@@ -27,7 +27,7 @@ export class Header extends React.Component<Header.Props, Header.State> {
   render() {
     return (
       <header>
-        <h1>Todos</h1>
+        <h1>TodoJS</h1>
         <TodoTextInput
           newTodo
           onSave={this.handleSave}
